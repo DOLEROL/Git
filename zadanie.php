@@ -14,11 +14,11 @@
             $array[$key] = 0;
         }
         # Wartość w tablicy dla wskazanego klucza zwiększona o 1
-        return $array[$key]++;
+        $array[$key]++;
     }
 
     while (($data = fgetcsv($csv_data, 50, ",")) !== false) {
-        # Jeżeli wartość daty urodzenia jest większa lub równa 2000-01-01 zwiększ wartość o 1
+        # Jeżeli wartość daty urodzenia jest większa lub równa 2000-01-01
         if(strtotime($data[1]) >= strtotime("2000-01-01")){
             checkArrayKey($array_birthday, $data[1]);
         }
