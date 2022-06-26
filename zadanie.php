@@ -9,19 +9,17 @@
 
     # Funkcja sprawdzająca czy podany klucz istanieje w tablicy oraz zwiększająca wartość o 1
     function checkArrayKey(&$array, $key){
-        # Jeżeli podany klucz nie istanieje w tablicy, zostaje utworzony oraz zostaje przypisana mu wartość 0
-        if(!isset($array[$key])){
-            $array[$key] = 0;
-        }
-        # Wartość w tablicy dla wskazanego klucza zwiększona o 1
-        $array[$key]++;
+
+        # Jeżeli podany klucz nie istanieje w tablicy, zostaje utworzony oraz zostaje przypisana mu wartość 1.
+        # W innym przypadku wartość zostaje zwiększona o 1
+        (!isset($array[$key])) ? $array[$key] = 1 : $array[$key]++;
     }
 
     while (($data = fgetcsv($csv_data, 50, ",")) !== false) {
+
         # Jeżeli wartość daty urodzenia jest większa lub równa 2000-01-01
-        if(strtotime($data[1]) >= strtotime("2000-01-01")){
-            checkArrayKey($array_birthday, $data[1]);
-        }
+        (strtotime($data[1]) >= strtotime("2000-01-01")) ? checkArrayKey($array_birthday, $data[1]) : null;
+
         checkArrayKey($array_name, $data[0]);
     }
 
@@ -30,7 +28,9 @@
 
     echo "Zadanie 1:\n";
     foreach(array_slice($array_name, 0, 10) as $name => $num){
-        echo ucfirst($name)."\t".$num."\n";
+        echo ucfirst($name);
+        echo (mb_strlen($name) < 8) ? "\t\t" : "\t";
+        echo $num."\n";
     };
 
     # Sortowanie tablicy po wartościach malejąco
