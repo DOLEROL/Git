@@ -28,6 +28,7 @@
 
     echo "Zadanie 1:\n";
     foreach(array_slice($array_name, 0, 10) as $name => $num){
+        # Zamiana wszystkich liter na małe, następnie zamiana pierwszej litery na dużą
         echo ucfirst(strtolower($name));
         echo (mb_strlen($name) < 8) ? "\t\t" : "\t";
         echo $num."\n";
