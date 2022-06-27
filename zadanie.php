@@ -28,7 +28,7 @@
 
     echo "Zadanie 1:\n";
     foreach(array_slice($array_name, 0, 10) as $name => $num){
-        echo ucfirst($name);
+        echo ucfirst(strtolower($name));
         echo (mb_strlen($name) < 8) ? "\t\t" : "\t";
         echo $num."\n";
     };
